@@ -10,23 +10,21 @@
 
 #searchBlock {
     display: inline-block;
-
     overflow: auto;
     width: 20%;
     height: 550px;
     font-family: arial, sans-serif;
     font-size: 13px;
-
     color: rgb(68, 68, 68);
 }
 
 #content {
     overflow: auto;
     width: 80%;
-    height: 500px;
+    height: 554px;
     position: absolute;
     left: 20%;
-    top: 100px;
+    top: 50px;
     font-family: arial, sans-serif;
     font-size: 13px;
 
@@ -36,7 +34,7 @@
 #footer {
     background: lightslategray;
     width: inherit;
-    height: 50px;
+    height: 47px;
 }
 
 fieldset:hover {
