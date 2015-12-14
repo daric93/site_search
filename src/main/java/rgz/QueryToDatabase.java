@@ -45,17 +45,14 @@ public class QueryToDatabase {
     }
 
     private static String createQuery(Map<String, String[]> map, List<String> values) {
-        StringBuilder query = new StringBuilder("SELECT ID,Producer FROM Phones WHERE ");
+        StringBuilder query = new StringBuilder("SELECT ID,Producer,Model,NumberOfCores,Diagonal,OperatingSystem,Price FROM Phones WHERE ");
         for (Map.Entry<String, String[]> entry : map.entrySet()) {
             query.append("( ");
             for (int i = 0; i < entry.getValue().length; i++) {
                 if (Objects.equals(entry.getKey(), "Price")) {
-                    query.append(entry.getKey());
-                    query.append(" <= ? or ");
-                } else {
-                    query.append(entry.getKey());
-                    query.append(" = ? or ");
-                }
+                    query.append(entry.getKey()).append(" <= ? or ");
+                } else
+                    query.append(entry.getKey()).append(" = ? or ");
                 values.add(entry.getValue()[i]);
             }
             query.delete(query.length() - 4, query.length());

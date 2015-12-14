@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button type="button" onclick="loadDoc()">Request data</button>
+<p id="demo"></p>
+</body>
+<script>
+    function loadDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                document.getElementById("demo").innerHTML = xhttp.responseText;
+            }
+        };
+        xhttp.open("GET", "/HelloWorld", true);
+        xhttp.send();
+    }
+</script>
+</html>

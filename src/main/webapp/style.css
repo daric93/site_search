@@ -1,30 +1,69 @@
-#body{
+#body {
     margin: 0px;
 }
+
 #header {
-    background: grey;
+    background: lightslategrey;
     width: inherit;
-    height: 100px;
+    height: 50px;
 }
 
 #searchBlock {
+    display: inline-block;
+
     overflow: auto;
-    background: darkorange;
     width: 20%;
-    height: 450px;
+    height: 550px;
+    font-family: arial, sans-serif;
+    font-size: 13px;
+
+    color: rgb(68, 68, 68);
 }
 
 #content {
     overflow: auto;
     width: 80%;
-    height: 450px;
+    height: 500px;
     position: absolute;
     left: 20%;
     top: 100px;
+    font-family: arial, sans-serif;
+    font-size: 13px;
+
+    color: rgb(68, 68, 68);
 }
 
 #footer {
-    background: grey;
+    background: lightslategray;
     width: inherit;
-    height: 100px;
+    height: 50px;
 }
+
+fieldset:hover {
+    background-color: rgb(245, 245, 245);
+linear-gradient(#f4f4f4, #f1f1f1));
+}
+
+input[type=button] {
+    display: inline-block;
+    font-family: arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    color: rgb(68, 68, 68);
+    text-decoration: none;
+    user-select: none;
+    padding: .2em 1.2em;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 2px;
+    background: rgb(245, 245, 245) linear-gradient(#f4f4f4, #f1f1f1);
+    transition: all .218s ease 0s;
+}
+
+input[type=button]:hover {
+    color: rgb(24, 24, 24);
+    border: 1px solid rgb(198, 198, 198);
+    background: #f7f7f7 linear-gradient(#f7f7f7, #f1f1f1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+

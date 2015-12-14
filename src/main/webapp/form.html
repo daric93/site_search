@@ -8,7 +8,7 @@
 <body style="margin: 0px">
 <div id="header"></div>
 <form id="searchBlock" name="form">
-    <fieldset>
+    <fieldset id="fieldSearch">
         <legend>Producer</legend>
         <label><input type="checkbox" name="Producer" value="Asus">Asus</label><br>
         <label><input type="checkbox" name="Producer" value="Lenovo">Lenovo</label><br>
@@ -21,7 +21,7 @@
     <br>
     <fieldset>
         <legend>Price</legend>
-        <input type="text" name="showPrice">
+        Up to <input type="text" name="showPrice" style="width: 87px">
         <input type="range" name="price" min="0" max="20000" step="1" value="20000" oninput="getValue(this.value)"><br>
     </fieldset>
     <br>
@@ -32,14 +32,6 @@
             Phone</label><br>
     </fieldset>
     <br>
-    <!--<fieldset>
-        <legend>Diagonal</legend>
-        <label><input type="checkbox" name="diagonal" value="4.1-4.5">4.1-4.5</label><br>
-        <label><input type="checkbox" name="diagonal" value="4.5-5.0">4.5-5.0</label><br>
-        <label><input type="checkbox" name="diagonal" value="5.1-5.5">5.1-5.5</label><br>
-        <label><input type="checkbox" name="diagonal" value="5.55-6.0">5.55-6.0</label><br>
-    </fieldset>
-    <br>-->
     <fieldset>
         <legend>NumberOfCores</legend>
         <label><input type="checkbox" name="NumberOfCores" value="2">2</label><br>
@@ -78,17 +70,8 @@
         var producerParam = getChecked(producer);
         var systemParam = getChecked(system);
         var coresParam = getChecked(cores);
-        coresParam = coresParam.slice(0,-1);
-        //var diagonalParam = getChecked(diagonal);
-        //diagonalParam = diagonalParam.slice(0, -1);
-        xhttp.open("GET", "/form?" + producerParam + "Price=" + price + "&" + systemParam + coresParam );
-        /*xhttp.open("GET", "/form?" +
-         "producer=" + producer +
-         "&price=" + price +
-         "&" + param +
-         "cores=" + cores +
-         "&diagonal=" + diagonal,
-         true);*/
+        coresParam = coresParam.slice(0, -1);
+        xhttp.open("GET", "/form?" + producerParam + "Price=" + price + "&" + systemParam + coresParam);
         xhttp.send();
     }
 
