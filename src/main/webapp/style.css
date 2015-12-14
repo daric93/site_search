@@ -1,0 +1,30 @@
+#body{
+    margin: 0px;
+}
+#header {
+    background: grey;
+    width: inherit;
+    height: 100px;
+}
+
+#searchBlock {
+    overflow: auto;
+    background: darkorange;
+    width: 20%;
+    height: 450px;
+}
+
+#content {
+    overflow: auto;
+    width: 80%;
+    height: 450px;
+    position: absolute;
+    left: 20%;
+    top: 100px;
+}
+
+#footer {
+    background: grey;
+    width: inherit;
+    height: 100px;
+}

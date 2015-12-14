@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body style="margin: 0px">
+<div id="header"></div>
+<form id="searchBlock" name="form">
+    <fieldset>
+        <legend>Producer</legend>
+        <label><input type="checkbox" name="Producer" value="Asus">Asus</label><br>
+        <label><input type="checkbox" name="Producer" value="Lenovo">Lenovo</label><br>
+        <label><input type="checkbox" name="Producer" value="Microsoft Lumia">Microsoft Lumia</label><br>
+        <label><input type="checkbox" name="Producer" value="Samsung">Samsung</label><br>
+        <label><input type="checkbox" name="Producer" value="LG">LG</label><br>
+        <label><input type="checkbox" name="Producer" value="HTC">HTC</label><br>
+        <label><input type="checkbox" name="Producer" value="Sony Xperia">Sony Xperia</label><br>
+    </fieldset>
+    <br>
+    <fieldset>
+        <legend>Price</legend>
+        <input type="text" name="showPrice">
+        <input type="range" name="price" min="0" max="20000" step="1" value="20000" oninput="getValue(this.value)"><br>
+    </fieldset>
+    <br>
+    <fieldset>
+        <legend>OperatingSystem</legend>
+        <label><input type="checkbox" name="OperatingSystem" value="Android">Android</label><br>
+        <label><input type="checkbox" name="OperatingSystem" value="Windows Phone">Windows
+            Phone</label><br>
+    </fieldset>
+    <br>
+    <!--<fieldset>
+        <legend>Diagonal</legend>
+        <label><input type="checkbox" name="diagonal" value="4.1-4.5">4.1-4.5</label><br>
+        <label><input type="checkbox" name="diagonal" value="4.5-5.0">4.5-5.0</label><br>
+        <label><input type="checkbox" name="diagonal" value="5.1-5.5">5.1-5.5</label><br>
+        <label><input type="checkbox" name="diagonal" value="5.55-6.0">5.55-6.0</label><br>
+    </fieldset>
+    <br>-->
+    <fieldset>
+        <legend>NumberOfCores</legend>
+        <label><input type="checkbox" name="NumberOfCores" value="2">2</label><br>
+        <label><input type="checkbox" name="NumberOfCores" value="4">4</label><br>
+        <label><input type="checkbox" name="NumberOfCores" value="8">8</label><br>
+    </fieldset>
+    <br>
+    <input type="button" value="Submit" onclick="loadDoc()">
+</form>
+<div id="content"></div>
+<div id="footer"></div>
+</body>
+<script>
+    function loadDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                document.getElementById("content").innerHTML = xhttp.responseText;
+            }
+        };
+        var producer = document.getElementsByName("Producer");
+        var price = document.form.price.value;
+        var system = document.getElementsByName("OperatingSystem");
+        var cores = document.getElementsByName("NumberOfCores");
+        //var diagonal = document.getElementsByName("diagonal");
+
+        function getChecked(name) {
+            var param = "";
+            for (var i = 0; i < name.length; i++) {
+                if (name[i].checked)
+                    param += name[i].name + "=" + name[i].value + "&";
+            }
+            return param;
+        }
+
+        var producerParam = getChecked(producer);
+        var systemParam = getChecked(system);
+        var coresParam = getChecked(cores);
+        coresParam = coresParam.slice(0,-1);
+        //var diagonalParam = getChecked(diagonal);
+        //diagonalParam = diagonalParam.slice(0, -1);
+        xhttp.open("GET", "/form?" + producerParam + "Price=" + price + "&" + systemParam + coresParam );
+        /*xhttp.open("GET", "/form?" +
+         "producer=" + producer +
+         "&price=" + price +
+         "&" + param +
+         "cores=" + cores +
+         "&diagonal=" + diagonal,
+         true);*/
+        xhttp.send();
+    }
+
+    function getValue(value) {
+        document.form.showPrice.value = value;
+    }
+</script>
+</html>
